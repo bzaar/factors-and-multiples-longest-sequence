@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorsAndMultiplesGame", "FactorsAndMultiplesGame\FactorsAndMultiplesGame.csproj", "{7BAD5472-CA34-49BF-8175-6F578AF7F02C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorsAndMultiplesGame", "FactorsAndMultiplesGame.csproj", "{7BAD5472-CA34-49BF-8175-6F578AF7F02C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
