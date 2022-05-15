@@ -4,17 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using FactorsAndMultiplesGame;
 
+int longest = 45;
 const int max = 100;
-
 var stopwatch = Stopwatch.StartNew();
-
 int[][] factorsAndMultiples = PrecomputeFactorsAndMultiples();
-
-bool[] used = new bool[max];
-
+var used = new bool[max];
 var stack = new Stack<IEnumerator<int>>();
-
-int longest = 15;
 
 IEnumerator<int> enumerator = Enumerable.Range(1, max-1)
     .Reverse()
