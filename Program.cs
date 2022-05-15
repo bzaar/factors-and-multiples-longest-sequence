@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using FactorsAndMultiplesGame;
-
-int longest = 45;
+﻿int longest = 45; // do not print anything shorter than this
 const int max = 100;
-var stopwatch = Stopwatch.StartNew();
-int[][] factorsAndMultiples = PrecomputeFactorsAndMultiples();
+var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 var used = new bool[max];
 var stack = new Stack<IEnumerator<int>>();
+int[][] factorsAndMultiples = PrecomputeFactorsAndMultiples();
+
+Console.WriteLine("The average number of factors and multiples per number is " + 
+    factorsAndMultiples.Select(fam => (double) fam.Length).Average());
 
 IEnumerator<int> enumerator = Enumerable.Range(1, max)
     .Reverse()
@@ -31,9 +28,9 @@ for (;;)
 
         if (stack.Count > longest)
         {
+            longest = stack.Count;
             Console.Write(stopwatch.Elapsed + " " + stack.Count + ": ");
             Console.WriteLine(string.Join(" ", stack.Reverse().Select(e => e.Current)));
-            longest = stack.Count;
         }
     }
     else
@@ -49,9 +46,9 @@ for (;;)
 
 int[][] PrecomputeFactorsAndMultiples()
 {
-    var fam = new FactorsAndMultiples(max);
+    var fam = new FactorsAndMultiplesGame.FactorsAndMultiples(max);
 
-    return Enumerable.Range(0, max)
-        .Select(i => fam.Get(i + 1).ToArray())
+    return Enumerable.Range(1, max)
+        .Select(i => fam.Get(i).ToArray())
         .ToArray();
 }
