@@ -9,8 +9,10 @@ namespace FactorsAndMultiplesGame
         [TestCase(55, "1 5 11")]
         public void Test1(int n, string expected)
         {
-            string actual = string.Join(" ", FactorsAndMultiples.Get(n));
+            string actual = string.Join(" ", _factorsAndMultiples.Get(n));
             Assert.AreEqual(expected, actual);
         }
+        
+        private readonly FactorsAndMultiples _factorsAndMultiples = new (100);
     }
 }

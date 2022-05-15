@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using FactorsAndMultiplesGame;
 
-const int Max = FactorsAndMultiples.Max;
+const int max = 100;
 
 var stopwatch = Stopwatch.StartNew();
 
-int[][] factorsAndMultiples = Enumerable.Range(0, Max)
-    .Select(i => FactorsAndMultiples.Get(i+1).ToArray())
-    .ToArray();
+int[][] factorsAndMultiples = PrecomputeFactorsAndMultiples();
 
-bool[] used = new bool[Max];
+bool[] used = new bool[max];
 
 var stack = new Stack<IEnumerator<int>>();
 
 int longest = 15;
 
-IEnumerator<int> enumerator = Enumerable.Range(1, Max-1)
+IEnumerator<int> enumerator = Enumerable.Range(1, max-1)
     .Reverse()
     .GetEnumerator();
 
@@ -51,4 +50,13 @@ for (;;)
             used[enumerator.Current - 1] = false;
         }
     }
+}
+
+int[][] PrecomputeFactorsAndMultiples()
+{
+    var fam = new FactorsAndMultiples(max);
+
+    return Enumerable.Range(0, max)
+        .Select(i => fam.Get(i + 1).ToArray())
+        .ToArray();
 }

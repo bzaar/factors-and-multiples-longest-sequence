@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
 
-public static class FactorsAndMultiples
+namespace FactorsAndMultiplesGame
 {
-    public const int Max = 100;
-    
-    public static IEnumerable<int> Get(int num)
+    public record FactorsAndMultiples(int Max)
     {
-        for (int m = num * 2; m <= Max; m += num)
+        public IEnumerable<int> Get(int num)
         {
-            yield return m;
-        }
-        
-        for (int f = 1; f <= num / 2; ++f)
-        {
-            if (num % f == 0)
+            for (int m = num * 2; m <= Max; m += num)
             {
-                yield return f;
+                yield return m;
+            }
+        
+            for (int f = 1; f <= num / 2; ++f)
+            {
+                if (num % f == 0)
+                {
+                    yield return f;
+                }
             }
         }
     }
