@@ -11,7 +11,7 @@ int[][] factorsAndMultiples = PrecomputeFactorsAndMultiples();
 var used = new bool[max];
 var stack = new Stack<IEnumerator<int>>();
 
-IEnumerator<int> enumerator = Enumerable.Range(1, max-1)
+IEnumerator<int> enumerator = Enumerable.Range(1, max)
     .Reverse()
     .GetEnumerator();
 
